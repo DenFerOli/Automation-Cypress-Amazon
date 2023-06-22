@@ -45,4 +45,13 @@ describe('Login', () => {
         cy.get('#auth-email-missing-alert > .a-box-inner > .a-alert-content').contains('Enter your email or mobile phone number');
         cy.get('#auth-password-missing-alert > .a-box-inner > .a-alert-content').contains('Minimum 6 characters required');
     });
+
+    it.only('Show error messages when try to create account filling mobile number and e-mail with ', () => {
+        cy.registerUser();
+        cy.get('#ap_password_check').type('userTestCypress2023');
+        cy.get('#continue').click();
+        cy.get('#auth-customerName-missing-alert > .a-box-inner > .a-alert-content').contains('Enter your name');
+        cy.get('#auth-email-missing-alert > .a-box-inner > .a-alert-content').contains('Enter your email or mobile phone number');
+        cy.get('#auth-password-missing-alert > .a-box-inner > .a-alert-content').contains('Minimum 6 characters required');
+    });
 });
